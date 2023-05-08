@@ -1,6 +1,6 @@
 # flutter_zip_archive
 
-A new Flutter plugin project.
+A new Flutter plugin project for write password protected zip files and streams
 
 ## Getting Started
 
