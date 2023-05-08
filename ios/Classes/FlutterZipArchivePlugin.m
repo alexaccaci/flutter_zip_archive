@@ -20,22 +20,28 @@
   }
 }
 
+-(NSString *)isStringEmpty:(NSString *)str {
+     if(str == nil || [str isKindOfClass:[NSNull class]] || str.length==0) {
+       return nil;
+     }
+     return str;
+}
+
 - (void)zip:(FlutterMethodCall*)call result:(FlutterResult)result {
     NSString *src = call.arguments[@"src"];
     NSString *dest = call.arguments[@"dest"];
-    NSString *password = call.arguments[@"password"];
+    NSString *pass = call.arguments[@"password"];
     NSLog(@"Zip %@->%@",src,dest);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDir,success;
 
-    password = password.length > 0 ? password : nil;
     [fileManager fileExistsAtPath:src isDirectory:&isDir];
     if(isDir) {
          success = [SSZipArchive createZipFileAtPath:dest
                              withContentsOfDirectory:src
                                  keepParentDirectory:NO
                                     compressionLevel:-1
-                                            password:password
+                                            password:[self isStringEmpty:pass]
                                                  AES:NO
                                      progressHandler:nil];
     } else {
@@ -45,7 +51,7 @@
             success &= [zipArchive writeFileAtPath:src
                                       withFileName:src.lastPathComponent
                                    compressionLevel:-1
-                                           password:password
+                                           password:[self isStringEmpty:pass]
                                                 AES:NO];
             success &= [zipArchive close];
          }
