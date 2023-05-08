@@ -1,0 +1,36 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_zip_archive (0.0.1):
+    - Flutter
+    - SSZipArchive
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - SSZipArchive (2.4.3)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_zip_archive (from `.symlinks/plugins/flutter_zip_archive/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+
+SPEC REPOS:
+  trunk:
+    - SSZipArchive
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_zip_archive:
+    :path: ".symlinks/plugins/flutter_zip_archive/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_zip_archive: 91829b7c59c8d173332ef983f4e81a67c29534bb
+  path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
+
+PODFILE CHECKSUM: 663715e941f9adb426e33bf9376914006f9ea95b
+
+COCOAPODS: 1.11.3
