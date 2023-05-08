@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_zip_archive/flutter_zip_archive.dart';
 import 'package:path_provider/path_provider.dart';
 
+const String? password = null;
+
 Future<File> copy(String fname) async {
   Directory tempDir = await getTemporaryDirectory();
   final file = File('${tempDir.path}/x/$fname');
@@ -53,16 +55,16 @@ class _MyAppState extends State<MyApp> {
       platformVersion = await _flutterZipArchivePlugin.getPlatformVersion();
       print(platformVersion);
       Directory tempDir = await getTemporaryDirectory();
-      final d1 = File("${tempDir.path}/out1.zip");
-      if (d1.existsSync()) d1.deleteSync();
-      result = await _flutterZipArchivePlugin.zip("${tempDir.path}/x/start.png", d1.path, "1234");
+      final o1 = File("${tempDir.path}/out1.zip");
+      if (o1.existsSync()) o1.deleteSync();
+      result = await _flutterZipArchivePlugin.zip("${tempDir.path}/x/start.png", o1.path, password);
       print(result);
-      print(await d1.length());
-      final d2 = File("${tempDir.path}/out2.zip");
-      if (d2.existsSync()) d2.deleteSync();
-      result = await _flutterZipArchivePlugin.zip("${tempDir.path}/x", d2.path, "1234");
+      print(await o1.length());
+      final o2 = File("${tempDir.path}/out2.zip");
+      if (o2.existsSync()) o2.deleteSync();
+      result = await _flutterZipArchivePlugin.zip("${tempDir.path}/x", o2.path, password);
       print(result);
-      print(await d2.length());
+      print(await o2.length());
     }
     catch (e) {
       platformVersion = 'Error platform: $e';

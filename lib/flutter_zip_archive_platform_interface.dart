@@ -26,7 +26,7 @@ abstract class FlutterZipArchivePlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
-  Future<String?> zip(String src, String dest, String password) {
+  Future<String?> zip(String src, String dest, String? password) {
     throw UnimplementedError('zip() has not been implemented.');
   }
 }

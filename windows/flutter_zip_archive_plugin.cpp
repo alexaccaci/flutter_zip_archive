@@ -33,7 +33,7 @@ const char* ValueOrNull(const flutter::EncodableMap& map, const char* key) {
     return NULL;
   }
   const std::string* val = std::get_if<std::string>(&it->second);
-  return (*val).c_str();
+  return val != nullptr ? (*val).c_str() : NULL;
 }
 
 // static
@@ -81,7 +81,8 @@ void FlutterZipArchivePlugin::HandleMethodCall(
     int32_t err = MZ_OK;
 
     mz_zip_writer_create(&writer);
-    mz_zip_writer_set_password(writer, pass);
+    if(pass != NULL && strlen(pass) > 0)
+        mz_zip_writer_set_password(writer, pass);
     mz_zip_writer_set_compress_method(writer, MZ_COMPRESS_METHOD_DEFLATE);
     mz_zip_writer_set_compress_level(writer, MZ_COMPRESS_LEVEL_DEFAULT);
     err = mz_zip_writer_open_file(writer, dest, 0, 0);

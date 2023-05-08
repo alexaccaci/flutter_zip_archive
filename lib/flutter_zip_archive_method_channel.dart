@@ -14,7 +14,7 @@ class MethodChannelFlutterZipArchive extends FlutterZipArchivePlatform {
     return await methodChannel.invokeMethod<String>('getPlatformVersion');
   }
 
-  Future<String?> zip(String src, String dest, String password) async {
+  Future<String?> zip(String src, String dest, String? password) async {
     return await methodChannel.invokeMethod<String>(
         'zip', <String, dynamic>{"src": src, "dest": dest, "password": password});
   }
